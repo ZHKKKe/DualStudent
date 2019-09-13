@@ -1,0 +1,14 @@
+# Temporary directories
+results
+*.ckpt
+
+third_party/data-local/workdir
+third_party/data-local/images
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Project files
+.vscode
