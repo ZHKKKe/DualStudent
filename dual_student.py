@@ -340,7 +340,6 @@ def train_epoch(train_loader, l_model, r_model, l_optimizer, r_optimizer, epoch,
         meters.update('l_stable_loss', l_stabilization_loss.data[0])
         l_loss += l_stabilization_loss
 
-
         if np.isnan(l_loss.data[0]) or np.isnan(r_loss.data[0]):
             LOG.info('Loss value equals to NAN!')
             continue

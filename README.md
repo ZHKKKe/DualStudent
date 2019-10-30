@@ -4,6 +4,9 @@
 This is the PyTorch implementation for our paper [Dual Student: Breaking the Limits of the Teacher in Semi-supervised Learning](https://arxiv.org/abs/1909.01804). 
 The style of code follows the official implementation of [Mean Teacher](https://github.com/CuriousAI/mean-teacher) (Code from their repository is inside the folder `./third_party/mean_teacher`). 
 
+## ICCV Poster
+![DualStudent ICCV Poster](poster.png)
+
 ## Citation
 If you use our method or code in your research, please cite:
 ```bibtex
@@ -38,6 +41,8 @@ This code runs on Python 3 with PyTorch 0.3.1. If you use Anaconda 3:
     ```
     git clone https://github.com/ZHKKKe/DualStudent.git
     ```
+    \* Line 258-341 in file `./dual_student.py` is the code of stabilization constraint.
+
 
 ## Experiments
 
