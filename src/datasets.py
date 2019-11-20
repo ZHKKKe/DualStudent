@@ -40,3 +40,45 @@ def cifar100(tnum=2):
 
     dataset['datadir'] = 'third_party/' + dataset['datadir']
     return dataset
+
+
+@export
+def usps():
+    channel_stats = dict(mean=[0.5, 0.5, 0.5],
+                         std=[0.5, 0.5, 0.5])
+    train_transformation = data.TransformTwice(transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(**channel_stats)
+    ]))
+    eval_transformation = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(**channel_stats)
+    ])
+
+    return {
+        'train_transformation': train_transformation,
+        'eval_transformation': eval_transformation,
+        'datadir': 'third_party/data-local/images/usps',
+        'num_classes': 10,
+    }
+
+
+@export
+def mnist():
+    channel_stats = dict(mean=[0.5, 0.5, 0.5],
+                        std=[0.5, 0.5, 0.5])
+    train_transformation = data.TransformTwice(transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(**channel_stats)
+    ]))
+    eval_transformation = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(**channel_stats)
+    ])
+
+    return {
+        'train_transformation': train_transformation,
+        'eval_transformation': eval_transformation,
+        'datadir': 'third_party/data-local/images/mnist',
+        'num_classes': 10,
+    }

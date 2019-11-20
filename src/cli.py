@@ -33,6 +33,8 @@ def create_parser():
                         help='number of data loading workers (default: 4)')
     parser.add_argument('--labels', default=None, type=str, metavar='FILE',
                         help='list of image labels (default: based on directory structure)')
+    parser.add_argument('--target-domain', default=None, type=str, 
+                        help='target unlabeled domain for domain adaptation experiments if not None')
 
     # optimization
     parser.add_argument('--batch-size', default=100, type=int,

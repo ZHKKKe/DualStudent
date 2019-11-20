@@ -44,6 +44,32 @@ def create_data_loaders(train_transformation, eval_transformation, datadir, args
         sampler = SubsetRandomSampler(labeled_idxs)
         batch_sampler = BatchSampler(sampler, args.batch_size, drop_last=True)
     elif args.labeled_batch_size:
+
+        # domain adaptation dataset
+        if args.target_domain is not None:
+            LOG.info('\nYou set target domain: {0} on script.\n'
+                     'This is a domain adaptation experiment.\n'.format(args.target_domain))
+
+            target_dataset_config = datasets.__dict__[args.target_domain]()
+
+            if args.target_domain == 'mnist':
+                valid_sources = ['usps']
+                if not args.dataset in valid_sources:
+                    LOG.error('\nYou set \'mnist\' as the target domain. \n'
+                              'However, you use the source domain: \'{0}\'.\n'
+                              'The source domain should be \'{1}\''.format(args.dataset, valid_sources))
+                target_traindir = '{0}/train'.format(target_dataset_config['datadir'])
+                evaldir = '{0}/test'.format(target_dataset_config['datadir'])
+                eval_transformation = target_dataset_config['eval_transformation']
+            else:
+                LOG.error('Unsupport target domain: {0}.\n'.format(args.target_domain))
+                
+            target_dataset = torchvision.datasets.ImageFolder(target_traindir, target_dataset_config['train_transformation'])
+            target_labeled_idxs, target_unlabeled_idxs = data.relabel_dataset(target_dataset, {})
+
+            dataset = ConcatDataset([dataset, target_dataset])
+            unlabeled_idxs += [ds_size + i for i in range(0, len(target_dataset.imgs))]
+
         batch_sampler = data.TwoStreamBatchSampler(
             unlabeled_idxs, labeled_idxs, args.batch_size, args.labeled_batch_size)
     else:

@@ -18,6 +18,13 @@ If you use our method or code in your research, please cite:
 }
 ```
 
+## Updates
+[Nov 20, 2019] Update code of 'Dual Student for domain adaptation from USPS to MNIST'.
+
+[Oct 30, 2019] Update ICCV 2019 poster.
+
+[Sep 13, 2019] Update code of 'Dual Student for semi-supervised learning on CIFAR benchmark'.
+
 ## Preparation
 This code runs on Python 3 with PyTorch 0.3.1. If you use Anaconda 3:
 1. Create a new python environment and switch to it:
@@ -75,3 +82,20 @@ Running on the CIFAR benchmark with 1 GPU:
 
 Please use `python dual_student.py --help` to check command line arguments.
 
+### Domain Adaptation with Dual Student
+In our paper, we also provide the result of USPS -> MNIST domain adaptation task.
+You can train the network to reproduce our result (or you can download the pre-trained model from [[link]](https://drive.google.com/drive/folders/1AjGfiw7U8grEhNBZVHXlk0h1W_u7sVKs?usp=sharing) for validating):
+
+1. Download USPS dataset from [[link]](https://www.kaggle.com/bistaumanga/usps-dataset) and decompress it into `./third_party/data-local/workdir/usps`.
+
+2. Prepare USPS dataset and MNIST dataset by following commands:
+    ```
+    ./third_party/data-local/bin/prepare_usps.sh
+    ./third_party/data-local/bin/prepare_mnist.sh
+    ```
+
+3. Reproduce our domain adaptation result by running:
+    ```
+    python -m scripts.ds_usps_mnist_da
+    ```
+    \* Naming rule of script/model is ''`[method]_[source domain]_[target domain]_da`''.

@@ -29,7 +29,8 @@ def unpack(source_data, target_dir, start_idx):
         subdir = os.path.join(target_dir, str(label_idx))
         name = '{}_{}.png'.format(start_idx + idx, str(label_idx))
         os.makedirs(subdir, exist_ok=True)
-        matplotlib.image.imsave(os.path.join(subdir, name), image_data)
+        image_data = image_data.convert('L')
+        image_data.save(os.path.join(subdir, name))
     return len(source_data)
 
 
