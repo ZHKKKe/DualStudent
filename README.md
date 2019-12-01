@@ -10,7 +10,7 @@ The style of code follows the official implementation of [Mean Teacher](https://
 ## Citation
 If you use our method or code in your research, please cite:
 ```bibtex
-@InProceedings{DualStudent_2019_ICCV,
+@InProceedings{ke19dualstudent,
 　author = {Zhanghan Ke and Daoye Wang and Qiong Yan and Jimmy Ren and Rynson W.H. Lau},
 　title = {Dual Student: Breaking the Limits of the Teacher in　Semi-supervised Learning},
 　booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
