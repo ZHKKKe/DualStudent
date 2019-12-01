@@ -10,11 +10,12 @@ The style of code follows the official implementation of [Mean Teacher](https://
 ## Citation
 If you use our method or code in your research, please cite:
 ```bibtex
-@InProceedings{ke19dualstudent,
-　author = {Zhanghan Ke and Daoye Wang and Qiong Yan and Jimmy Ren and Rynson W.H. Lau},
-　title = {Dual Student: Breaking the Limits of the Teacher in　Semi-supervised Learning},
-　booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
-　year = {2019}
+@InProceedings{Ke_2019_ICCV,
+  author = {Ke, Zhanghan and Wang, Daoye and Yan, Qiong and Ren, Jimmy and Lau, Rynson W.H.},
+  title = {Dual Student: Breaking the Limits of the Teacher in Semi-Supervised Learning},
+  booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+  month = {October},
+  year = {2019}
 }
 ```
 
