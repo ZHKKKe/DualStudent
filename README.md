@@ -4,6 +4,8 @@
 This is the PyTorch implementation for our paper [Dual Student: Breaking the Limits of the Teacher in Semi-supervised Learning](https://arxiv.org/abs/1909.01804). 
 The style of code follows the official implementation of [Mean Teacher](https://github.com/CuriousAI/mean-teacher) (Code from their repository is inside the folder `./third_party/mean_teacher`). 
 
+If you have any questions, please free to contact me by ```kezhanghan@outlook.com```.
+
 ## ICCV Poster
 ![DualStudent ICCV Poster](poster.png)
 
