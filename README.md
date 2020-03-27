@@ -10,7 +10,7 @@ If you have any questions, please free to contact me by ```kezhanghan@outlook.co
 ![DualStudent ICCV Poster](poster.png)
 
 ## Citation
-If you use our method or code in your research, please cite:
+If you use our method or code in your research, please consider to cite:
 ```bibtex
 @InProceedings{Ke_2019_ICCV,
   author = {Ke, Zhanghan and Wang, Daoye and Yan, Qiong and Ren, Jimmy and Lau, Rynson W.H.},
@@ -22,6 +22,8 @@ If you use our method or code in your research, please cite:
 ```
 
 ## Updates
+[Mar 27, 2020] Update log storage function, which allows the log to be stored via `logging.FileHandler`.
+
 [Nov 20, 2019] Update code of 'Dual Student for domain adaptation from USPS to MNIST'.
 
 [Oct 30, 2019] Update ICCV 2019 poster.
