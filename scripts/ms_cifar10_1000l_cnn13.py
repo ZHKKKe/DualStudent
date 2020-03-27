@@ -5,7 +5,7 @@ import torch
 
 from src.cli import parse_dict_args
 from src.run_context import RunContext
-import dual_student
+import multiple_student
 
 
 LOG = logging.getLogger('main')
@@ -14,34 +14,35 @@ LOG = logging.getLogger('main')
 def parameters():
     defaults = {
         # global
-        'resume': './checkpoints/ds_cifar100_10000l_cnn13.300.ckpt',
+        'resume': './checkpoints/ms_cifar10_1000l_cnn13.300.ckpt',
         'validation': True,
 
         # data
-        'dataset': 'cifar100',
+        'dataset': 'cifar10',
         'train_subdir': 'train+val',
         'eval_subdir': 'test',
         'workers': 2,
 
         # optimization
-        'base_batch_size': 128,
-        'base_labeled_batch_size': 31,
+        'base_batch_size': 100,
+        'base_labeled_batch_size': 50,
         # 'exclude_unlabeled': True,
 
-        'base_lr': 0.2,
+        'base_lr': 0.1,
         'nesterov': True,
-        'weight_decay': 2e-4,
+        'weight_decay': 1e-4,
 
         'checkpoint_epochs': 20,
 
         # architecture
         'arch': 'cnn13',
+        'model_num': 4,
 
         # constraint
         'consistency_scale': 10.0,
         'consistency_rampup': 5,
 
-        'stable_threshold': 0.4,
+        'stable_threshold': 0.8,
         'stabilization_scale': 100.0,
         'stabilization_rampup': 5,
 
@@ -49,17 +50,17 @@ def parameters():
 
     }
 
-    # 10000 labels:
-    for data_seed in range(10, 19):
+    # 1000 labels:
+    for data_seed in range(10, 11):
         yield {
             **defaults,
-            'title': 'ds_cifar100_10000l_cnn13.',
-            'n_labels': 10000,
+            'title': 'ms_cifar10_1000l_cnn13',
+            'n_labels': 1000,
             'data_seed': data_seed,
             'epochs': 300,
         }
 
-
+            
 def run(title, base_batch_size, base_labeled_batch_size, base_lr, n_labels, data_seed, **kwargs):
     LOG.info('run title: %s, data seed: %d', title, data_seed)
     ngpu = torch.cuda.device_count()
@@ -68,14 +69,14 @@ def run(title, base_batch_size, base_labeled_batch_size, base_lr, n_labels, data
         'batch_size': base_batch_size * ngpu,
         'labeled_batch_size': base_labeled_batch_size * ngpu,
         'lr': base_lr * ngpu,
-        'labels': 'third_party/data-local/labels/cifar100/{}_balanced_labels/{:02d}.txt'.format(n_labels, data_seed),
+        'labels': 'third_party/data-local/labels/cifar10/{}_balanced_labels/{:02d}.txt'.format(n_labels, data_seed),
     }
     context = RunContext(__file__, "{}_{}".format(n_labels, data_seed))
     fh = logging.FileHandler('{0}/log.txt'.format(context.result_dir))
     fh.setLevel(logging.INFO)
     LOG.addHandler(fh)
-    dual_student.args = parse_dict_args(**adapted_args, **kwargs)
-    dual_student.main(context)
+    multiple_student.args = parse_dict_args(**adapted_args, **kwargs)
+    multiple_student.main(context)
 
 
 if __name__ == '__main__':

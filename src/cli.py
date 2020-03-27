@@ -91,6 +91,11 @@ def create_parser():
                         help='let the student model have two outputs and use an MSE loss　between '
                              'the logits with the given weight (default: only have one output)')
 
+    # for Multiple Student
+    parser.add_argument('--model-num', default=2, type=int, metavar='MS',
+                        help='number of the student models during training, which is required by '
+                             ' multiple_student.py [set it to 2 is equal to Dual Student] (default: 2)')
+
     return parser
 
 

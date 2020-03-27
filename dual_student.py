@@ -310,25 +310,25 @@ def train_epoch(train_loader, l_model, r_model, l_optimizer, r_optimizer, epoch,
         for sdx in range(0, minibatch_size):
             l_stable = False
             if l_mask[sdx] == 0 and le_mask[sdx] == 0:              
-                # unstable: do not satisfy 2nd condition
+                # unstable: do not satisfy the 2nd condition
                 tar_l_class_logit[sdx, ...] = in_r_cons_logit[sdx, ...]
             elif l_cls_i[sdx] != le_cls_i[sdx]:
-                # unstable: do not satisfy 1st condition
+                # unstable: do not satisfy the 1st condition
                 tar_l_class_logit[sdx, ...] = in_r_cons_logit[sdx, ...]
             else:
                 l_stable = True
 
             r_stable = False
             if r_mask[sdx] == 0 and re_mask[sdx] == 0:
-                # unstable: do not satisfy 2nd condition
+                # unstable: do not satisfy the 2nd condition
                 tar_r_class_logit[sdx, ...] = in_l_cons_logit[sdx, ...]
             elif r_cls_i[sdx] != re_cls_i[sdx]:
-                # unstable: do not satisfy 1st condition
+                # unstable: do not satisfy the 1st condition
                 tar_r_class_logit[sdx, ...] = in_l_cons_logit[sdx, ...]
             else:
                 r_stable = True
 
-            # calculate stanility if both models are stable for a sample
+            # calculate stability if both models are stable for a sample
             if l_stable and r_stable:
                 # compare by consistency
                 l_sample_cons = consistency_criterion(l_cons_logit[sdx:sdx+1, ...], le_class_logit[sdx:sdx+1, ...])
