@@ -71,7 +71,7 @@ def run(title, base_batch_size, base_labeled_batch_size, base_lr, n_labels, data
         'labels': 'third_party/data-local/labels/usps/{}_balanced_labels/{:02d}.txt'.format(n_labels, data_seed),
     }
     context = RunContext(__file__, "{}_{}".format(n_labels, data_seed))
-    fh = logging.FileHandler('{0}/train.log'.format(context.result_dir))
+    fh = logging.FileHandler('{0}/log.txt'.format(context.result_dir))
     fh.setLevel(logging.INFO)
     LOG.addHandler(fh)
     dual_student.args = parse_dict_args(**adapted_args, **kwargs)
