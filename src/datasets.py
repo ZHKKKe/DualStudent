@@ -43,13 +43,13 @@ def cifar100(tnum=2):
 
 
 @export
-def usps():
+def usps(tnum=2):
     channel_stats = dict(mean=[0.5, 0.5, 0.5],
                          std=[0.5, 0.5, 0.5])
-    train_transformation = data.TransformTwice(transforms.Compose([
+    train_transformation = data.TransformNTimes(transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(**channel_stats)
-    ]))
+    ]), n=tnum)
     eval_transformation = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(**channel_stats)
@@ -64,13 +64,13 @@ def usps():
 
 
 @export
-def mnist():
+def mnist(tnum=2):
     channel_stats = dict(mean=[0.5, 0.5, 0.5],
                         std=[0.5, 0.5, 0.5])
-    train_transformation = data.TransformTwice(transforms.Compose([
+    train_transformation = data.TransformNTimes(transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(**channel_stats)
-    ]))
+    ]), n=tnum)
     eval_transformation = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(**channel_stats)
