@@ -14,8 +14,8 @@ LOG = logging.getLogger('main')
 def parameters():
     defaults = {
         # global
-        'resume': '',
-        'validation': False,
+        'resume': './checkpoints/ms_cifar10_1000l_cnn13.300.ckpt',
+        'validation': True,
 
         # data
         'dataset': 'cifar10',

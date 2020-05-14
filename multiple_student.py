@@ -291,9 +291,13 @@ def main(context):
 
     # validation
     if args.validation:
+        prec1_list =[]
         for mdx, model in enumerate(model_list):
             LOG.info('Validating the model-{0}: '.format(mdx))
-            validate(eval_loader, model, validate_logs[mdx], global_step, args.start_epoch)
+            prec1 = validate(eval_loader, model, validate_logs[mdx], global_step, args.start_epoch)
+            prec1_list.append(prec1)
+        best_prec1 = np.max(np.asarray(prec1_list))
+        LOG.info('Best top1 prediction: {0}'.format(best_prec1))
         return
 
     # training
@@ -326,9 +330,9 @@ def main(context):
                 'arch': args.arch 
             }
             for mdx, model in enumerate(model_list):
-                checkpoint_dict['{0}_model'.format(mdx)] = model
+                checkpoint_dict['{0}_model'.format(mdx)] = model.state_dict()
             for mdx, optimizer in enumerate(optimizer_list):
-                checkpoint_dict['{0}_optimizer'.format(mdx)] = optimizer
+                checkpoint_dict['{0}_optimizer'.format(mdx)] = optimizer.state_dict()
             
             mt_func.save_checkpoint(checkpoint_dict, is_best, checkpoint_path, epoch + 1)
 
