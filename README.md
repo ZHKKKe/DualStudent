@@ -1,27 +1,13 @@
-# Dual Student: Breaking the Limits of the Teacher in Semi-supervised Learning
+# Dual Student: Breaking the Limits of the Teacher in Semi-Supervised Learning
 
 
 This is the PyTorch implementation for our paper [Dual Student: Breaking the Limits of the Teacher in Semi-supervised Learning](https://arxiv.org/abs/1909.01804). 
 The style of code follows the official implementation of [Mean Teacher](https://github.com/CuriousAI/mean-teacher) (Code from their repository is inside the folder `./third_party/mean_teacher`). 
 
-If you have any questions, please free to contact me by ```kezhanghan@outlook.com```.
-
-## ICCV Poster
-![DualStudent ICCV Poster](poster.png)
-
-## Citation
-If you use our method or code in your research, please consider to cite:
-```bibtex
-@InProceedings{Ke_2019_ICCV,
-  author = {Ke, Zhanghan and Wang, Daoye and Yan, Qiong and Ren, Jimmy and Lau, Rynson W.H.},
-  title = {Dual Student: Breaking the Limits of the Teacher in Semi-Supervised Learning},
-  booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
-  month = {October},
-  year = {2019}
-}
-```
 
 ## Updates
+[May 15, 2020] Update code of 'Multiple Student for semi-supervised learning on CIFAR benchmark'.
+
 [Mar 27, 2020] Update log storage function, which allows the log to be stored via `logging.FileHandler`.
 
 [Nov 20, 2019] Update code of 'Dual Student for domain adaptation from USPS to MNIST'.
@@ -29,6 +15,9 @@ If you use our method or code in your research, please consider to cite:
 [Oct 30, 2019] Update ICCV 2019 poster.
 
 [Sep 13, 2019] Update code of 'Dual Student for semi-supervised learning on CIFAR benchmark'.
+
+## Poster
+![DualStudent ICCV Poster](poster.png)
 
 ## Preparation
 This code runs on Python 3 with PyTorch 0.3.1. If you use Anaconda 3:
@@ -58,7 +47,7 @@ This code runs on Python 3 with PyTorch 0.3.1. If you use Anaconda 3:
 
 ## Experiments
 
-### Semi-supervised Learning with Dual Student
+### Semi-Supervised Learning with Dual Student
 Running on the CIFAR benchmark with 1 GPU:
 1. Switch to the project folder `./DualStudent` and prepare the CIFAR dataset by following commands:
     ```
@@ -66,7 +55,7 @@ Running on the CIFAR benchmark with 1 GPU:
     ./third_party/data-local/bin/prepare_cifar100.sh
     ```
 
-2. We provide pre-trained models for experiments `CIFAR-10 with 1k labels` and `CIFAR-100 with 10k labels`.Please download them from [[link]](https://drive.google.com/drive/folders/1AjGfiw7U8grEhNBZVHXlk0h1W_u7sVKs?usp=sharing) and put them into `./checkpoints`. Then, you can run:
+2. We provide the pre-trained models for experiments `CIFAR-10 with 1k labels` and `CIFAR-100 with 10k labels`. Please download them from [[link]](https://drive.google.com/drive/folders/1AjGfiw7U8grEhNBZVHXlk0h1W_u7sVKs?usp=sharing) and put them into `./checkpoints`. Then, you can run:
     ```
     python -m scripts.ds_cifar10_1000l_cnn13
     python -m scripts.ds_cifar100_10000l_cnn13
@@ -104,3 +93,39 @@ You can train the network to reproduce our result (or you can download the pre-t
     python -m scripts.ds_usps_mnist_da
     ```
     \* Naming rule of script/model is ''`[method]_[source domain]_[target domain]_da`''.
+
+
+### Semi-Supervised Learning with Multiple Student
+Running on the CIFAR benchmark with 1 GPU:
+
+1. We provide the pre-trained model for experiment `CIFAR-10 with 1k labels`. Please download it from [[link]](https://drive.google.com/drive/folders/1AjGfiw7U8grEhNBZVHXlk0h1W_u7sVKs?usp=sharing) and put it into `./checkpoints`. Then, you can run:
+    ```
+    python -m scripts.ms_cifar10_1000l_cnn13
+    ```
+    \* Naming rule of script/model is ''`[method]_[dataset]_[labels number]_[model archtecture]`''.
+
+3. If you want to train models yourselves, please comment following two lines on scripts as:
+
+    ```
+    # 'resume'  : './checkpoints/xxx',
+    # 'validation': True,
+    ```
+    Then, you can run:
+    ```
+    python -m scripts.ms_cifar10_1000l_cnn13
+    ```
+
+## Citation
+If you use our method or code in your research, please consider to cite:
+```bibtex
+@InProceedings{Ke_2019_ICCV,
+  author = {Ke, Zhanghan and Wang, Daoye and Yan, Qiong and Ren, Jimmy and Lau, Rynson W.H.},
+  title = {Dual Student: Breaking the Limits of the Teacher in Semi-Supervised Learning},
+  booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+  month = {October},
+  year = {2019}
+}
+```
+
+## Contact
+If you have any questions, please free to contact me by ```kezhanghan@outlook.com```.
