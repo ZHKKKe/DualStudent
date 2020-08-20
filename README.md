@@ -55,7 +55,7 @@ Running on the CIFAR benchmark with 1 GPU:
     ./third_party/data-local/bin/prepare_cifar100.sh
     ```
 
-2. We provide the pre-trained models for experiments `CIFAR-10 with 1k labels` and `CIFAR-100 with 10k labels`. Please download them from [[link]](https://drive.google.com/drive/folders/1AjGfiw7U8grEhNBZVHXlk0h1W_u7sVKs?usp=sharing) and put them into `./checkpoints`. Then, you can run:
+2. We provide the pre-trained models for experiments `CIFAR-10 with 1k labels` and `CIFAR-100 with 10k labels`. Please download them from [[link]](https://drive.google.com/drive/folders/1-XOwxK13VOK8e7dlC2CMPN_1aRspy2Wr?usp=sharing) and put them into `./checkpoints`. Then, you can run:
     ```
     python -m scripts.ds_cifar10_1000l_cnn13
     python -m scripts.ds_cifar100_10000l_cnn13
@@ -116,7 +116,7 @@ Running on the CIFAR benchmark with 1 GPU:
     ```
 
 ## Citation
-If you use our method or code in your research, please consider to cite:
+If you use our method or code in your research, please cite:
 ```bibtex
 @InProceedings{Ke_2019_ICCV,
   author = {Ke, Zhanghan and Wang, Daoye and Yan, Qiong and Ren, Jimmy and Lau, Rynson W.H.},
