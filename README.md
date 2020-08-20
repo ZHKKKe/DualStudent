@@ -78,7 +78,7 @@ Please use `python dual_student.py --help` to check command line arguments.
 
 ### Domain Adaptation with Dual Student
 In our paper, we also provide the result of USPS -> MNIST domain adaptation task.
-You can train the network to reproduce our result (or you can download the pre-trained model from [[link]](https://drive.google.com/drive/folders/1AjGfiw7U8grEhNBZVHXlk0h1W_u7sVKs?usp=sharing) for validation):
+You can train the network to reproduce our result (or you can download the pre-trained model from [[link]](https://drive.google.com/drive/folders/1-XOwxK13VOK8e7dlC2CMPN_1aRspy2Wr?usp=sharing) for validation):
 
 1. Download USPS dataset from [[link]](https://www.kaggle.com/bistaumanga/usps-dataset) and decompress it into `./third_party/data-local/workdir/usps`.
 
@@ -98,7 +98,7 @@ You can train the network to reproduce our result (or you can download the pre-t
 ### Semi-Supervised Learning with Multiple Student
 Running on the CIFAR benchmark with 1 GPU:
 
-1. We provide the pre-trained model for experiment `CIFAR-10 with 1k labels`. Please download it from [[link]](https://drive.google.com/drive/folders/1AjGfiw7U8grEhNBZVHXlk0h1W_u7sVKs?usp=sharing) and put it into `./checkpoints`. Then, you can run:
+1. We provide the pre-trained model for experiment `CIFAR-10 with 1k labels`. Please download it from [[link]](https://drive.google.com/drive/folders/1-XOwxK13VOK8e7dlC2CMPN_1aRspy2Wr?usp=sharing) and put it into `./checkpoints`. Then, you can run:
     ```
     python -m scripts.ms_cifar10_1000l_cnn13
     ```
